@@ -62,52 +62,50 @@ const MediaSearch = () => {
   };
 
   return (
-    <>
-      <Toolbar />
-      <Box sx={{ ...uiConfigs.style.mainContent }}>
-        <Stack spacing={2}>
-          <Stack
-            spacing={2}
-            direction="row"
-            justifyContent="center"
-            sx={{ width: "100%" }}
-          >
-            {mediaTypes.map((item, index) => (
-              <Button
-                size="large"
-                key={index}
-                variant={mediaType === item ? "contained" : "text"}
-                sx={{
-                  color: mediaType === item ? "primary.contrastText" : "text.primary"
-                }}
-                onClick={() => onCategoryChange(item)}
-              >
-                {item}
-              </Button>
-            ))}
-          </Stack>
-          <TextField
-            color="success"
-            placeholder="Search MoonFlix"
-            sx={{ width: "100%" }}
-            autoFocus
-            onChange={onQueryChange}
-          />
+		<>
+			<Toolbar />
+			<Box sx={{ ...uiConfigs.style.mainContent }}>
+				<Stack spacing={2}>
+					<Stack
+						spacing={2}
+						direction='row'
+						justifyContent='center'
+						sx={{ width: '100%' }}>
+						{mediaTypes.map((item, index) => (
+							<Button
+								size='large'
+								key={index}
+								variant={mediaType === item ? 'contained' : 'text'}
+								sx={{
+									color:
+										mediaType === item
+											? 'primary.contrastText'
+											: 'text.primary',
+								}}
+								onClick={() => onCategoryChange(item)}>
+								{item}
+							</Button>
+						))}
+					</Stack>
+					<TextField
+						color='success'
+						placeholder='Search MovieMania'
+						sx={{ width: '100%' }}
+						autoFocus
+						onChange={onQueryChange}
+					/>
 
-          <MediaGrid medias={medias} mediaType={mediaType} />
+					<MediaGrid medias={medias} mediaType={mediaType} />
 
-          {medias.length > 0 && (
-            <LoadingButton
-              loading={onSearch}
-              onClick={() => setPage(page + 1)}
-            >
-              load more
-            </LoadingButton>
-          )}
-        </Stack>
-      </Box>
-    </>
-  );
+					{medias.length > 0 && (
+						<LoadingButton loading={onSearch} onClick={() => setPage(page + 1)}>
+							load more
+						</LoadingButton>
+					)}
+				</Stack>
+			</Box>
+		</>
+	);
 };
 
 export default MediaSearch;
